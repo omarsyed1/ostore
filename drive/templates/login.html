@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+		<title>ODrive</title>
+		<link href="/static/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/static/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+		<!--Bootstrap javascript-->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="/static/dist/js/bootstrap.min.js"></script>
+		<script src="http://getbootstrap.com/doc-assets/js/holder.js"></script>
+	</head>
+	<body>
+		{% if form.errors %}
+			<p style="color:red">
+			Incorrect user name and password.
+			</p>
+		{% endif %}
+		<div>  
+			<div style = "width: 200px; margin: 0 auto;">
+			<form class="form-signin" action="{% url 'django.contrib.auth.views.login' %}" method = "post">
+				<h2 class="form-signin-heading"> Sign In </h2>
+				<input class="form-control" id="id_username" maxlength="254" name="username" type="text" placeholder="Email"></input>
+				<input class="form-control" id="id_password" name="password" type="password" placeholder="Password"></input>
+				<label class="checkbox">
+				<input type="checkbox" value="remember-me"></input>
+					Remember me
+				</label>
+				<input class="btn btn-primary btn-lg btn-block" type="submit"></input>
+				<input type="hidden" name="next" value="{{ next }}" />
+				{% csrf_token %}
+			</form>
+			<a href="{% url 'register' %}">Register</a>
+			</div>
+		</div>
+	</body>
+
+
+
+
+
+</html>

@@ -1,0 +1,16 @@
+#services-main {
+	position: relative;
+	background-size: 65%;
+	height: 900px;
+	left:0;
+	right:0;
+	text-align: center;
+}
+
+#inner {
+	position: absolute;
+	margin-top: 150px;
+	left:0;
+	right:0;
+	text-align: center;
+}

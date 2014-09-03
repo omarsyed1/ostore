@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link href="/static/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">ODrive</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="active"><a href="#">Add Storage</a></li>
+            <li><a>Contact</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div style = "width: 400px; margin: 0 auto; margin-top:100px;">
+      <li>{{ account_type }} account added successfully!</li>
+      <li>{{ account_type }} Link: {{ referral_link }}</li>
+      <li>Account Display Name: {{ username }}</li>
+      <li>Total Space: {{ total_space }} GB</li>
+      <li>Current Name on OStore: {{ account_name }}</li>
+      <li>Why don't you give this account a unique name on OStore for future reference?</li>
+      <div style = "width: 200px; margin: 0 auto;">
+        <form class="form-signin" action="/drive/rename/{{account_name}}/{{account_type}}" method = "post">
+          <h2 class="form-signin-heading"> Enter Unique Name </h2>
+          <input class="form-control" id="account_name" maxlength="40" name="new_account_name" type="text" placeholder="Account Name"></input>
+          <input class="btn btn-primary btn-lg btn-block" type="submit"></input>
+          {% csrf_token %}
+        </form>
+      </div>
+
+
+    </div>
+
+    <script type="/static/rename.js"></script>
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

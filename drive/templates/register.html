@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Register</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="static/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+	<!-- Bootstrap core CSS -->
+	<link href="/static/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+	<link href="/static/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div style = "width: 300px; margin: 0 auto;">
+		{% for error in form.non_field_errors %}
+		<p style="color: red">
+			{{ error }}
+		</p>
+		{% endfor %}
+		
+		<h1 class="lead blog-description">Register to start using ODrive:</h1>
+
+		<form method="post" action="{% url 'register' %}">
+			<table>
+				{% for field in form.visible_fields %}
+				<tr>
+					<td>{{field.label_tag}}</td>
+					<td>{{field}}</td>
+					<td style="color: red">{{field.errors}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% for field in form.hidden_fields %}
+			{{field}}
+			{% endfor %}
+			{% csrf_token %}
+			<div style = "text-align: center">
+				<input style = "margin-top: 10px" type="submit" class="btn btn-lg btn-success" value="Register" />
+				<div/>
+			</form>
+			<div/>
+		</body>
+		</html>
+
